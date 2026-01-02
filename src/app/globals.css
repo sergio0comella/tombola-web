@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* THEME TOKENS */
+:root {
+  /* Base */
+  --background: #fbf7ef;     /* crema */
+  --foreground: #0f172a;     /* slate-900 */
+  --muted: #64748b;          /* slate-500 */
+  --card: #ffffff;
+
+  /* Brand */
+  --primary: #800000;        /* borgogna */
+  --primary-2: #982B1C;      /* variante */
+  --accent: #d4af37;         /* oro */
+  --accent-soft: #fff2c6;    /* oro soft */
+
+  /* Fonts (se usi Geist ok) */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+.ring-brand { background-color: #22a80781; }
+/* opzionale: dark mode più coerente col tema */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b0f14;
+    --foreground: #e5e7eb;
+    --muted: #94a3b8;
+    --card: #0f1620;
+
+    --primary: #ff6b6b;
+    --primary-2: #ff3b3b;
+    --accent: #ffd166;
+    --accent-soft: rgba(255, 209, 102, 0.16);
+    --ring: rgba(255, 209, 102, 0.30);
+  }
+}
+
+/* Tailwind v4 theme bridge */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* aggiungiamo colori custom “brand-*” */
+  --color-brand-bg: var(--background);
+  --color-brand-card: var(--card);
+  --color-brand-muted: var(--muted);
+  --color-brand-primary: var(--primary);
+  --color-brand-primary2: var(--primary-2);
+  --color-brand-accent: var(--accent);
+  --color-brand-accentSoft: var(--accent-soft);
+}
+
+/* App base */
+html, body {
+  height: 100%;
+}
+
+body {
+  color: var(--foreground);
+  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+
+  /* sfondo “vivo” ma leggero */
+  background:
+    radial-gradient(1000px 600px at 15% 10%, rgba(255,255,255,0.95) 0%, rgba(251,247,239,0.95) 55%, rgba(243,239,230,1) 100%),
+    linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.0));
+}
+
+/* utility carine senza tailwind.config */
+.shadow-soft { box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); }
+.ring-brand { box-shadow: 0 0 0 3px var(--ring); }
