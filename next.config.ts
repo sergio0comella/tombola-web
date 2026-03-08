@@ -5,6 +5,7 @@ import type { NextConfig } from "next";
 const nextConfig = {
   allowedDevOrigins: ["http://localhost:3000"],
   reactCompiler: true,
+  output: "standalone"
 };
 
 module.exports = nextConfig;
